@@ -1,4 +1,4 @@
-package br.com.riume.restaurante.model;
+package br.com.riume.restaurante.model.usuarios;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -36,7 +36,6 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @ToString
 @Table(name = "pessoa",
 		uniqueConstraints = @UniqueConstraint(name = "UNQ_PESSOA", columnNames = {"cpf", "email"}),
@@ -45,7 +44,7 @@ import lombok.ToString;
 @Inheritance(strategy=InheritanceType.JOINED)
 @DynamicUpdate
 @Entity
-public abstract class Pessoa{
+public abstract class Pessoa {
 	
 	@Id
 	@GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
@@ -85,8 +84,14 @@ public abstract class Pessoa{
 	@Column(name = "deleted", columnDefinition = "boolean default false")
 	protected boolean deleted = false;
 
+	
+	public Pessoa () {
+		super();
+		addPerfil(Perfil.ATENDENTE);
+	}
+	
 	//@Builder
-	public Pessoa(String nome, String cpf, String email, String senha) {
+	public Pessoa (String nome, String cpf, String email, String senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -115,7 +120,7 @@ public abstract class Pessoa{
 		if (!super.equals(obj))
 			return false;
 
-		Pessoa other = (Pessoa) obj;
+		Pessoa  other = (Pessoa ) obj;
 
 		if (cpf == null) {
 			if (other.cpf != null)
