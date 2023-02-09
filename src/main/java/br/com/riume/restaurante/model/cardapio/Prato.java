@@ -2,9 +2,10 @@ package br.com.riume.restaurante.model.cardapio;
 
 import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
