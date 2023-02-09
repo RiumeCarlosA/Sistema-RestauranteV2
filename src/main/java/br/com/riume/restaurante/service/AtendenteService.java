@@ -26,30 +26,15 @@ public class AtendenteService {
 		return AtendenteDTO.builder()
 						.id(atendente.getId())
 						.nome(atendente.getNome())
-						.email(atendente.getEmail())
 						.senha(atendente.getSenha())
 						.perfis(atendente.getPerfil())
-						.cpf(atendente.getCpf())
 						.dataCriacao(atendente.getDataCriacao())
 						.deleted(atendente.isDeleted())
 						.build();
 	}
 	
-	private void validaPorCpfEEmail(AtendenteDTO objDTO) {
-		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
-		if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
-			throw new DataIntegrityViolationException("CPF Inválido");
-		}
-		
-		obj = pessoaRepository.findByEmail(objDTO.getEmail());
-		if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
-			throw new DataIntegrityViolationException("E-mail Inválido");
-		}
-	}
-	
 	public Atendente create(AtendenteDTO objDTO) {
 		objDTO.setId(null);
-		validaPorCpfEEmail(objDTO);
 		Atendente newObj = new Atendente(objDTO);
 		return repository.save(newObj);
 	}

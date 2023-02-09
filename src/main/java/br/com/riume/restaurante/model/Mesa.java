@@ -1,16 +1,20 @@
 package br.com.riume.restaurante.model;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.riume.restaurante.model.usuarios.Atendente;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,8 +39,22 @@ public class Mesa {
 	@Column(name = "numero_mesa", nullable = false)
 	private int numero;
 	
-//	@NotNull
-//	@OneToMany(mappedBy = "mesa")
-//	private Mesa mesa;
+	@Column(name = "total")
+	private Double total;
+	
+	@OneToMany(mappedBy = "mesa")
+	private List<Pedido<Atendente>> pedido;
+	
+	public Mesa(int numero) {
+		super();
+		this.numero = numero;
+	}
+	
+	public void atualizarTotal() {
+		for(Pedido<Atendente> i : this.pedido) {
+			i.atualizarTotal();
+			this.total += i.getTotal();
+		}		
+	}
 
 }

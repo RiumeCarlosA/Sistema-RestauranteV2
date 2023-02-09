@@ -10,8 +10,8 @@ import lombok.Builder;
 public class Caixa extends Pessoa{
 
 	@Builder
-	public Caixa(String nome, String cpf, String email, String senha) {
-		super(nome, cpf, email, senha);
+	public Caixa(String nome, String senha) {
+		super(nome, senha);
 	}
 	
 	
