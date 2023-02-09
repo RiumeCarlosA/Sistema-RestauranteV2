@@ -23,7 +23,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DynamicUpdate
 @Entity
 public abstract class ItemCardapio {
@@ -33,13 +33,9 @@ public abstract class ItemCardapio {
 	@GeneratedValue(generator = "UUIDGenerator")
 	protected UUID id;
 	
-	@NotEmpty
-	@NotNull
 	@Column(name = "nome", length = 255)
 	protected String nome;
 	
-	@NotEmpty
-	@NotNull
 	@Column(name = "preco")
 	protected Double precos;
 }

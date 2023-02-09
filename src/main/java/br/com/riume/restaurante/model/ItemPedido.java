@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -17,6 +18,8 @@ import br.com.riume.restaurante.model.usuarios.Atendente;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,6 +27,7 @@ import lombok.ToString;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @DynamicUpdate
 @Entity
@@ -38,12 +42,24 @@ public class ItemPedido<E extends ItemCardapio> {
 	@ManyToOne
 	private Pedido<Atendente> pedido;
 	
-	@ManyToOne
+	@OneToOne
 	private ItemCardapio produto;
 	
-	@Column(nullable = false)
+	@Column(name = "quantidade", nullable = false)
 	private int quantidade;
 	
-	@Column(nullable = false)
+	@Column(name = "total")
 	private Double total;
+	
+	public ItemPedido(Pedido<Atendente> pedido, ItemCardapio produto, int quantidade) {
+		super();
+		this.pedido = pedido;
+		this.produto = produto;
+		this.quantidade = quantidade;
+	}
+		
+	public Double getTotal() {
+		this.total = this.produto.getPrecos() * this.quantidade;
+		return this.total;
+	}
 }

@@ -10,8 +10,8 @@ import lombok.Builder;
 public class Admin extends Pessoa{
 
 	@Builder
-	public Admin(String nome, String cpf, String email, String senha) {
-		super(nome, cpf, email, senha);
+	public Admin(String nome, String senha) {
+		super(nome, senha);
 	}
 	
 }
