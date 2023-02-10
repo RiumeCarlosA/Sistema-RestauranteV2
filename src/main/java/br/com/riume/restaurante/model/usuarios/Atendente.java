@@ -1,12 +1,13 @@
 package br.com.riume.restaurante.model.usuarios;
 
+import java.io.Serializable;
 import java.util.stream.Collectors;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import br.com.riume.restaurante.dto.AtendenteDTO;
-import br.com.riume.restaurante.enums.Perfil;
+import br.com.riume.restaurante.model.usuarios.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,8 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @Entity
 @DiscriminatorValue("ATENDENTE")
-public class Atendente extends Pessoa {
+public class Atendente extends Pessoa implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Builder
 	public Atendente (String nome, String senha) {

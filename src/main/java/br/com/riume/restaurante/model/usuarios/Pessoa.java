@@ -1,6 +1,7 @@
 package br.com.riume.restaurante.model.usuarios;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -22,9 +23,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedDate;
 
-import br.com.riume.restaurante.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.riume.restaurante.model.usuarios.enums.Perfil;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,7 +40,8 @@ import lombok.ToString;
 @DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING)
 @DynamicUpdate
 @Entity
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
@@ -59,9 +62,9 @@ public abstract class Pessoa {
 	@CollectionTable(name = "PERFIS")
 	protected Set<Integer> perfis = new HashSet<>();
 	
-	@ToString.Exclude
-	@CreatedDate
-	protected LocalDate dataCriacao = LocalDate.now();
+	@Column
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
+	protected Instant dataCriacao = Instant.now();
 	
 	@Column(name = "deleted", columnDefinition = "boolean default false")
 	protected boolean deleted = false;

@@ -1,5 +1,6 @@
 package br.com.riume.restaurante.model.cardapio;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.DiscriminatorValue;
@@ -12,7 +13,8 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DiscriminatorValue("BEBIDA")
-public class Bebida extends ItemCardapio {
+public class Bebida extends ItemCardapio implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	public Bebida(UUID id, String nome, Double precos) {
 		super(id, nome, precos);

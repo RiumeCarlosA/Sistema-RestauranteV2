@@ -1,5 +1,6 @@
 package br.com.riume.restaurante.model.cardapio;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -13,7 +14,8 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DiscriminatorValue("PRATO")
-public class Prato extends ItemCardapio {
+public class Prato extends ItemCardapio implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "descricao", length = 500)
 	private String descricao;

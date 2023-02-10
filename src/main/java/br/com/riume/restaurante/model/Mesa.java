@@ -1,5 +1,6 @@
 package br.com.riume.restaurante.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
@@ -29,7 +29,8 @@ import lombok.ToString;
 @DynamicUpdate
 @Entity
 @Table(name = "mesa")
-public class Mesa {
+public class Mesa implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")

@@ -1,5 +1,6 @@
 package br.com.riume.restaurante.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -19,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -32,7 +32,8 @@ import lombok.ToString;
 @DynamicUpdate
 @Entity
 @Table(name = "item_pedido")
-public class ItemPedido<E extends ItemCardapio> {
+public class ItemPedido<E extends ItemCardapio> implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
