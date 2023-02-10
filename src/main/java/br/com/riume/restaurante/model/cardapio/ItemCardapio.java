@@ -1,5 +1,6 @@
 package br.com.riume.restaurante.model.cardapio;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -8,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
@@ -26,7 +25,8 @@ import lombok.ToString;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DynamicUpdate
 @Entity
-public abstract class ItemCardapio {
+public abstract class ItemCardapio implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")

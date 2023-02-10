@@ -1,14 +1,10 @@
 package br.com.riume.restaurante.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.riume.restaurante.dto.AtendenteDTO;
 import br.com.riume.restaurante.model.usuarios.Atendente;
-import br.com.riume.restaurante.model.usuarios.Pessoa;
 import br.com.riume.restaurante.repository.AtendenteRepository;
 import br.com.riume.restaurante.repository.PessoaRepository;
 

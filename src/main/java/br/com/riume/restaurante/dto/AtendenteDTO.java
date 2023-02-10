@@ -1,6 +1,6 @@
 package br.com.riume.restaurante.dto;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -8,7 +8,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotNull;
 
-import br.com.riume.restaurante.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.riume.restaurante.model.usuarios.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,7 +39,8 @@ public class AtendenteDTO {
 	protected Set<Integer> perfis = new HashSet<>();
 	
 	@ToString.Exclude
-	protected LocalDate dataCriacao = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
+	protected Instant dataCriacao = Instant.now();
 	
 	protected boolean deleted = false;
 	

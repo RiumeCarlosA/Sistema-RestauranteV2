@@ -1,4 +1,4 @@
-package br.com.riume.restaurante.enums;
+package br.com.riume.restaurante.model.usuarios.enums;
 
 import lombok.Getter;
 
