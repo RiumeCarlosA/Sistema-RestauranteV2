@@ -1,6 +1,5 @@
 package br.com.riume.restaurante.model.usuarios;
 
-import java.io.Serializable;
 import java.util.stream.Collectors;
 
 import javax.persistence.DiscriminatorValue;
@@ -19,7 +18,7 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @Entity
 @DiscriminatorValue("ATENDENTE")
-public class Atendente extends Pessoa implements Serializable {
+public class Atendente extends Pessoa {
 	private static final long serialVersionUID = 1L;
 	
 	@Builder
