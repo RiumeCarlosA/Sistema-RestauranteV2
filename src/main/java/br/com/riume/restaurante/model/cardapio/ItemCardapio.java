@@ -25,7 +25,7 @@ import lombok.ToString;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DynamicUpdate
 @Entity
-public abstract class ItemCardapio implements Serializable{
+public abstract class ItemCardapio implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
