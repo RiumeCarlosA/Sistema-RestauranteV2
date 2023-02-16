@@ -26,11 +26,8 @@ public class AtendenteDTO {
 	@NotNull(message = "O campo nome é obrigatório")
 	protected String nome;
 	
-	@NotNull(message = "O campo CPF é obrigatório")
-	protected String cpf;
-	
-	@NotNull(message = "O campo E-mail é obrigatório")
-	protected String email;
+	@NotNull(message = "O campo Usuário é obrigatório")
+	protected String usuario;
 	
 	@NotNull(message = "O campo senha é obrigatório")
 	protected String senha;
@@ -50,11 +47,10 @@ public class AtendenteDTO {
 	}
 	
 	@Builder
-	public AtendenteDTO (String nome, String cpf, String email, String senha) {
+	public AtendenteDTO (String nome, String usuario, String senha) {
 		super();
 		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
+		this.usuario = usuario;
 		this.senha = senha;
 		addPerfil(Perfil.ATENDENTE);
 	}
