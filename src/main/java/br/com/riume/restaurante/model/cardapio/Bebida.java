@@ -1,10 +1,9 @@
 package br.com.riume.restaurante.model.cardapio;
 
-import java.util.UUID;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import br.com.riume.restaurante.dto.cardapioDTO.BebidaDTO;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -15,8 +14,15 @@ import lombok.ToString;
 public class Bebida extends ItemCardapio {
 	private static final long serialVersionUID = 1L;
 	
-	public Bebida(UUID id, String nome, Double precos) {
-		super(id, nome, precos);
+	public Bebida(String nome, Double precos) {
+		super(nome, precos);
 	}
 
+	public Bebida (BebidaDTO obj) {
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.precos = obj.getPrecos();
+		this.dataCriacao = obj.getDataCriacao();
+		this.deleted = obj.isDeleted();
+	}
 }

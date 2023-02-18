@@ -1,6 +1,7 @@
 package br.com.riume.restaurante.model.cardapio;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.InheritanceType;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,4 +41,19 @@ public abstract class ItemCardapio implements Serializable {
 	
 	@Column(name = "preco")
 	protected Double precos;
+	
+	@Column
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
+	protected Instant dataCriacao = Instant.now();
+	
+	@Column(name = "deleted")
+	protected boolean deleted = false;
+	
+	ItemCardapio() {
+	}
+	
+	ItemCardapio(String nome, Double precos) {
+		this.nome = nome;
+		this.precos = precos;
+	}
 }
