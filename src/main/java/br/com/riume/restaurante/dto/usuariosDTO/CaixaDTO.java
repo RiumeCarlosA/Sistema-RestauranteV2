@@ -1,4 +1,4 @@
-package br.com.riume.restaurante.dto;
+package br.com.riume.restaurante.dto.usuariosDTO;
 
 import java.time.Instant;
 import java.util.HashSet;
@@ -36,19 +36,19 @@ public class CaixaDTO {
 	protected Set<Integer> perfis = new HashSet<>();
 	
 	@ToString.Exclude
+	@Builder.Default
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	protected Instant dataCriacao = Instant.now();
 	
+	@Builder.Default
 	protected boolean deleted = false;
 	
 	public CaixaDTO () {
-		super();
 		addPerfil(Perfil.ATENDENTE);
 	}
 	
 	@Builder
 	public CaixaDTO (String nome, String usuario, String senha) {
-		super();
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
