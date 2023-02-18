@@ -37,7 +37,7 @@ public class DBService {
 		Atendente ate1 = new Atendente("Riume", "riume", "123@mudar");
 		Mesa mesa = new Mesa(1);
 		Pedido<Atendente> pedido = new Pedido<>(mesa, ate1);
-		Bebida coca = new Bebida(null, "Coca-cola", 5.55);
+		Bebida coca = new Bebida("Coca-cola", 5.55);
 		ItemPedido<ItemCardapio> itemPedido = new ItemPedido<>(pedido, coca, 2);
 		
 		itemCardapioRepository.save(coca);
