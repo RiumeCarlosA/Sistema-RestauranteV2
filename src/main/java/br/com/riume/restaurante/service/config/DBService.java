@@ -34,7 +34,7 @@ public class DBService {
 	private MesaRepository mesaRepository;
 	
 	public void instanciaDB() {
-		Atendente ate1 = new Atendente("Riume Carlos", "123@mudar");
+		Atendente ate1 = new Atendente("Riume", "riume", "123@mudar");
 		Mesa mesa = new Mesa(1);
 		Pedido<Atendente> pedido = new Pedido<>(mesa, ate1);
 		Bebida coca = new Bebida(null, "Coca-cola", 5.55);

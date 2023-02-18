@@ -54,6 +54,11 @@ public abstract class Pessoa implements Serializable{
 	
 	@NotNull
 	@NotEmpty
+	@Column(name = "usuario", nullable = false)
+	protected String usuario;
+	
+	@NotNull
+	@NotEmpty
 	@Column(name = "senha", nullable = false)
 	protected String senha;
 	
@@ -71,13 +76,11 @@ public abstract class Pessoa implements Serializable{
 
 	
 	public Pessoa () {
-		super();
 		addPerfil(Perfil.ATENDENTE);
 	}
 	
-	//@Builder
-	public Pessoa (String nome, String senha) {
-		super();
+	public Pessoa (String nome, String usuario, String senha) {
+		this.usuario = usuario;
 		this.nome = nome;
 		this.senha = senha;
 		addPerfil(Perfil.ATENDENTE);

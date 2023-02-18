@@ -22,8 +22,8 @@ public class Atendente extends Pessoa {
 	private static final long serialVersionUID = 1L;
 	
 	@Builder
-	public Atendente (String nome, String senha) {
-		super(nome, senha);
+	public Atendente (String nome, String usuario, String senha) {
+		super(nome, usuario, senha);
 		addPerfil(Perfil.ATENDENTE);
 	}
 	
