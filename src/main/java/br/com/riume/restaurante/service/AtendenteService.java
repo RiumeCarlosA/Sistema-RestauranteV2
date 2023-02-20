@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.riume.restaurante.dto.usuariosDTO.AtendenteDTO;
 import br.com.riume.restaurante.model.usuarios.Atendente;
-import br.com.riume.restaurante.repository.AtendenteRepository;
-import br.com.riume.restaurante.repository.PessoaRepository;
+import br.com.riume.restaurante.repository.usuarios.AtendenteRepository;
 
 @Service
 public class AtendenteService {
@@ -14,8 +13,8 @@ public class AtendenteService {
 	@Autowired
 	private AtendenteRepository repository;
 	
-	@Autowired
-	private PessoaRepository pessoaRepository;
+//	@Autowired
+//	private PessoaRepository pessoaRepository;
 	
 	
 	public AtendenteDTO convertAtendenteToAtendenteDTO(Atendente atendente) {

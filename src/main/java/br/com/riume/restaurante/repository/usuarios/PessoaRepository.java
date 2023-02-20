@@ -1,4 +1,4 @@
-package br.com.riume.restaurante.repository;
+package br.com.riume.restaurante.repository.usuarios;
 
 import java.util.UUID;
 

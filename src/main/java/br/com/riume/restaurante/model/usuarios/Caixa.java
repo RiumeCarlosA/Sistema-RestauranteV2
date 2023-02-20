@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import br.com.riume.restaurante.dto.usuariosDTO.AtendenteDTO;
 import br.com.riume.restaurante.dto.usuariosDTO.CaixaDTO;
 import br.com.riume.restaurante.model.usuarios.enums.Perfil;
 import lombok.Builder;

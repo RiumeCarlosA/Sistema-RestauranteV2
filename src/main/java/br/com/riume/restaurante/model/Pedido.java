@@ -65,6 +65,7 @@ public class Pedido<E extends Atendente> implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	private Instant dataCriacao = Instant.now();
 	
+	public Pedido() {}
 	public Pedido(Mesa mesa, Atendente atendente) {
 		this.atendente = atendente;
 		this.mesa = mesa;
