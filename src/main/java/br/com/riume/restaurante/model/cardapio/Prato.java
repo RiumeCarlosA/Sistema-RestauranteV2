@@ -1,11 +1,10 @@
 package br.com.riume.restaurante.model.cardapio;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import br.com.riume.restaurante.dto.cardapioDTO.PratoDTO;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -19,8 +18,17 @@ public class Prato extends ItemCardapio {
 	@Column(name = "descricao", length = 500)
 	private String descricao;
 	
-	public Prato(UUID id, String nome, Double precos, String descricao) {
-		super(id, nome, precos);
+	public Prato(String nome, Double precos, String descricao) {
+		super(nome, precos);
 		this.descricao = descricao;
+	}
+
+	public Prato (PratoDTO obj) {
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.precos = obj.getPrecos();
+		this.dataCriacao = obj.getDataCriacao();
+		this.deleted = obj.isDeleted();
+		this.descricao = obj.getDescricao();
 	}
 }

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import br.com.riume.restaurante.dto.AtendenteDTO;
+import br.com.riume.restaurante.dto.usuariosDTO.AtendenteDTO;
 import br.com.riume.restaurante.model.usuarios.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,8 +22,8 @@ public class Atendente extends Pessoa {
 	private static final long serialVersionUID = 1L;
 	
 	@Builder
-	public Atendente (String nome, String senha) {
-		super(nome, senha);
+	public Atendente (String nome, String usuario, String senha) {
+		super(nome, usuario, senha);
 		addPerfil(Perfil.ATENDENTE);
 	}
 	

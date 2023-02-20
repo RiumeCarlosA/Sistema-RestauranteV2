@@ -13,7 +13,7 @@ import br.com.riume.restaurante.repository.ItemCardapioRepository;
 import br.com.riume.restaurante.repository.ItemPedidoRepository;
 import br.com.riume.restaurante.repository.MesaRepository;
 import br.com.riume.restaurante.repository.PedidoRepository;
-import br.com.riume.restaurante.repository.PessoaRepository;
+import br.com.riume.restaurante.repository.usuarios.PessoaRepository;
 
 @Service
 public class DBService {
@@ -34,11 +34,13 @@ public class DBService {
 	private MesaRepository mesaRepository;
 	
 	public void instanciaDB() {
-		Atendente ate1 = new Atendente("Riume Carlos", "123@mudar");
+		Atendente ate1 = new Atendente("Riume", "riume", "123@mudar");
 		Mesa mesa = new Mesa(1);
-		Pedido<Atendente> pedido = new Pedido<>(mesa, ate1);
-		Bebida coca = new Bebida(null, "Coca-cola", 5.55);
+		Pedido<Atendente> pedido = new Pedido<Atendente>();
+		Bebida coca = new Bebida("Coca-cola", 5.55);
 		ItemPedido<ItemCardapio> itemPedido = new ItemPedido<>(pedido, coca, 2);
+		pedido.setMesa(mesa);
+		pedido.setAtendente(ate1);
 		
 		itemCardapioRepository.save(coca);
 		mesaRepository.save(mesa);
