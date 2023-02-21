@@ -38,7 +38,7 @@ public class ItemPedido<E extends ItemCardapio> implements Serializable {
 	@Id
 	@GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
 	@GeneratedValue(generator = "UUIDGenerator")
-	protected UUID id;
+	private UUID id;
 	
 	@ManyToOne
 	private Pedido<Atendente> pedido;

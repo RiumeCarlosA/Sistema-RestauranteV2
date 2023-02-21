@@ -66,6 +66,7 @@ public class Pedido<E extends Atendente> implements Serializable{
 	private Instant dataCriacao = Instant.now();
 	
 	public Pedido() {}
+	
 	public Pedido(Mesa mesa, Atendente atendente) {
 		this.atendente = atendente;
 		this.mesa = mesa;
