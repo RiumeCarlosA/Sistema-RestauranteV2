@@ -48,6 +48,7 @@ public abstract class Pessoa implements Serializable{
 	@GeneratedValue(generator = "UUIDGenerator")
 	protected UUID id;
 	
+	@NotNull
 	@NotEmpty
 	@Column(name = "nome", length = 255)
 	protected String nome;
@@ -75,11 +76,11 @@ public abstract class Pessoa implements Serializable{
 	protected boolean deleted = false;
 
 	
-	public Pessoa () {
+	public Pessoa() {
 		addPerfil(Perfil.ATENDENTE);
 	}
 	
-	public Pessoa (String nome, String usuario, String senha) {
+	public Pessoa(String nome, String usuario, String senha) {
 		this.usuario = usuario;
 		this.nome = nome;
 		this.senha = senha;
