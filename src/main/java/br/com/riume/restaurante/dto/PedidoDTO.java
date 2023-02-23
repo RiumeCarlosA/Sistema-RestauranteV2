@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.riume.restaurante.model.ItemPedido;
 import br.com.riume.restaurante.model.Mesa;
 import br.com.riume.restaurante.model.cardapio.ItemCardapio;
@@ -31,6 +33,7 @@ public class PedidoDTO {
 	protected boolean deleted = false;
 	
 	@Builder.Default
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	private Instant dataCriacao = Instant.now();
 	
 	public PedidoDTO() {}

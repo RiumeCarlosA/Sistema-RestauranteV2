@@ -1,5 +1,8 @@
 package br.com.riume.restaurante.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +35,10 @@ public class AtendenteService {
 		objDTO.setId(null);
 		Atendente newObj = new Atendente(objDTO);
 		return repository.save(newObj);
+	}
+	
+	public List<AtendenteDTO> findAll() {
+		List<Atendente> list = repository.findAll();	
+		return list.stream().map(obj -> convertAtendenteToAtendenteDTO(obj)).collect(Collectors.toList());
 	}
 }
