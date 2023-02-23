@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.riume.restaurante.dto.response.AtendenteResponseDTO;
 import br.com.riume.restaurante.dto.usuariosDTO.AtendenteDTO;
 import br.com.riume.restaurante.model.usuarios.Atendente;
 import br.com.riume.restaurante.repository.usuarios.AtendenteRepository;
@@ -24,10 +25,20 @@ public class AtendenteService {
 		return AtendenteDTO.builder()
 						.id(atendente.getId())
 						.nome(atendente.getNome())
+						.usuario(atendente.getUsuario())
 						.senha(atendente.getSenha())
 						.perfis(atendente.getPerfil())
 						.dataCriacao(atendente.getDataCriacao())
 						.deleted(atendente.isDeleted())
+						.build();
+	}
+	
+	public AtendenteResponseDTO convertAtendenteToAtendenteResponseDTO(Atendente atendente) {
+		return AtendenteResponseDTO.builder()
+						.id(atendente.getId())
+						.nome(atendente.getNome())
+						.usuario(atendente.getUsuario())
+						.perfis(atendente.getPerfil())
 						.build();
 	}
 	
@@ -37,8 +48,28 @@ public class AtendenteService {
 		return repository.save(newObj);
 	}
 	
-	public List<AtendenteDTO> findAll() {
-		List<Atendente> list = repository.findAll();	
-		return list.stream().map(obj -> convertAtendenteToAtendenteDTO(obj)).collect(Collectors.toList());
+	public List<AtendenteResponseDTO> findAll() {
+		List<Atendente> list = repository.findAll();
+		
+		List<AtendenteResponseDTO> listDTO = list.stream()
+													.map(obj -> (obj.isDeleted()) ? null : convertAtendenteToAtendenteResponseDTO(obj))
+													.collect(Collectors.toList());
+		
+		listDTO.remove(null);
+		
+		return listDTO;
+		}
+
+	public List<AtendenteDTO> findAllFull() {
+		List<Atendente> list = repository.findAll();
+		
+		List<AtendenteDTO> listDTO = list.stream()
+													.map(obj -> (obj.isDeleted()) ? null : convertAtendenteToAtendenteDTO(obj))
+													.collect(Collectors.toList());
+		
+		listDTO.remove(null);
+		
+		return listDTO;
+		}
 	}
-}
+
